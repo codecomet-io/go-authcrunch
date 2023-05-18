@@ -160,6 +160,10 @@ func (b *IdentityProvider) Authenticate(r *requests.Request) error {
 					r.Response.IdentityTokenCookie.Enabled = true
 					r.Response.IdentityTokenCookie.Name = b.config.IdentityTokenCookieName
 					r.Response.IdentityTokenCookie.Payload = v.(string)
+				} else if v, exists = accessToken["access_token"]; exists {
+					r.Response.IdentityTokenCookie.Enabled = true
+					r.Response.IdentityTokenCookie.Name = b.config.IdentityTokenCookieName
+					r.Response.IdentityTokenCookie.Payload = v.(string)
 				}
 			}
 
